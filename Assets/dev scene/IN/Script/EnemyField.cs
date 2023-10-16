@@ -65,7 +65,6 @@ public class EnemyField : MonoBehaviour
             else
                 canSeePlayer = false;
 
-
         }
         else if (canSeePlayer)
             canSeePlayer = false;
