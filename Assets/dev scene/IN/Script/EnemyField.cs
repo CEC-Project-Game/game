@@ -10,7 +10,7 @@ public class EnemyField : MonoBehaviour
     public float PlayerPosition;
 
     public float radius;
-
+    [Range(0, 360)]
     public float angle;
 
     public GameObject playerRef;
@@ -53,12 +53,15 @@ public class EnemyField : MonoBehaviour
         {
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
+
             if(Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if(!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                    canSeePlayer = true;
+                {   canSeePlayer = true;
+                    Debug.Log("SEE PLAYER");
+                }
                 else
                     canSeePlayer = false;
             }

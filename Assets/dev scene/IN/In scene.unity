@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 6406999}
   - component: {fileID: 6406998}
   - component: {fileID: 6406997}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,17 +414,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 156269325}
   _destinationPoint: {x: 0, y: 0, z: 0}
-  _destinationRadius: 0
+  _destinationRadius: 15
   PlayerPosition: 0
-  radius: 0
-  angle: 0
+  radius: 15
+  angle: 90
   playerRef: {fileID: 2044869214}
   targetMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   obstructionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   canSeePlayer: 0
 --- !u!65 &156269327
 BoxCollider:
@@ -1171,7 +1171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1095763729}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CameraHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1531,7 +1531,7 @@ GameObject:
   - component: {fileID: 1877788303}
   - component: {fileID: 1877788305}
   - component: {fileID: 1877788304}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1651,9 +1651,9 @@ GameObject:
   - component: {fileID: 2044869217}
   - component: {fileID: 2044869216}
   - component: {fileID: 2044869215}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
