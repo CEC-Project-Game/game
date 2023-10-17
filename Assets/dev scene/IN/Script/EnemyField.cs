@@ -4,31 +4,28 @@ using UnityEngine;
 
 public class EnemyField : MonoBehaviour
 {
+    [Header("Agent")]
     public UnityEngine.AI.NavMeshAgent agent;
     public Vector3 _destinationPoint;
     public float _destinationRadius;
-    public float PlayerPosition;
+    public Transform PlayerPosition;
+    public LayerMask targetMask;
+    public LayerMask obstructionMask;
+    public bool canSeePlayer;
 
+    [Header("setting")]
     public float radius;
     [Range(0, 360)]
     public float angle;
 
-    public GameObject playerRef;
-
-    public LayerMask targetMask;
-    public LayerMask obstructionMask;
-
-    public bool canSeePlayer;
-
     void Start()
     {
-        playerRef = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
     }
 
     void Update()
     {
-        if(agent.remainingDistance < 0.1f)
+        if(agent.remainingDistance < 0.1f || canSeePlayer)
         {
             SearhWaypoint();
         }
@@ -59,9 +56,8 @@ public class EnemyField : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if(!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                {   canSeePlayer = true;
-                    Debug.Log("SEE PLAYER");
-                }
+                   canSeePlayer = true;
+                
                 else
                     canSeePlayer = false;
             }
@@ -75,8 +71,17 @@ public class EnemyField : MonoBehaviour
 
     private void SearhWaypoint()
     {
-        _destinationPoint  = Random.insideUnitSphere * _destinationRadius;
-        _destinationPoint = _destinationPoint + transform.position;
+        if(!canSeePlayer)
+        {
+            _destinationPoint  = Random.insideUnitSphere * _destinationRadius;
+            _destinationPoint = _destinationPoint + transform.position;
+        }    
+
+        if(canSeePlayer)
+        {
+            _destinationPoint = PlayerPosition.position;
+            Debug.Log("Can see player");
+        }
         
         UnityEngine.AI.NavMeshHit hit;
         if(UnityEngine.AI.NavMesh.SamplePosition(_destinationPoint, out hit, 1f, UnityEngine.AI.NavMesh.AllAreas))
@@ -86,11 +91,6 @@ public class EnemyField : MonoBehaviour
             agent.SetDestination(_destinationPoint);
         }
         else SearhWaypoint();
-    }
-
-    private void EyeEnemy()
-    {
-
     }
 
     void OnDrawGizmos()

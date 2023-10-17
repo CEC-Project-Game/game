@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public Camera playerCamera;
+    private Camera playerCamera;
     private CharacterController characterController;
 
     private Vector3 moveDirection;
@@ -96,6 +96,11 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        GameObject cameraObject = GameObject.Find("Camera1");
+        if (cameraObject != null)
+        {
+            playerCamera = cameraObject.GetComponent<Camera>();
+        }
         stamina = staminaMax;
         animator = GetComponent<Animator>();
         playerCamera = GetComponentInChildren<Camera>();
