@@ -1,43 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Invector.vCamera;
 
 public class PlayerSetting : MonoBehaviour
 {
+    public GameObject[] Controllers;
     public GameObject[] players;
-    public Transform[] Holdercameras;
+    public GameObject camera1;
     private int currentPlayerIndex = 0;
-    public Transform camera;
 
     void Start()
     {
+
+        GameObject controller1 = GameObject.FindWithTag("Controller1");
+        GameObject controller2 = GameObject.FindWithTag("Controller2");
+        GameObject controller3 = GameObject.FindWithTag("Controller3");
+        GameObject controller4 = GameObject.FindWithTag("Controller4");
+        Controllers = new GameObject[4] {controller1,controller2,controller3,controller4};
+        
+        controller1.SetActive(true);
+        controller2.SetActive(false);
+        controller3.SetActive(false);
+        controller4.SetActive(false);
+
+        camera1 = GameObject.Find("vThirdPersonCamera1");
+
         GameObject player1 = GameObject.FindWithTag("Player1");
         GameObject player2 = GameObject.FindWithTag("Player2");
         GameObject player3 = GameObject.FindWithTag("Player3");
         GameObject player4 = GameObject.FindWithTag("Player4");
+        players = new GameObject[4] {player1, player2, player3, player4};
 
-        players = new GameObject[4];
-        players[0] = player1;
-        players[1] = player2;
-        players[2] = player3;
-        players[3] = player4;
+        player1.SetActive(true);
+        player2.SetActive(false);
+        player3.SetActive(false);
+        player4.SetActive(false);
         
-        player1.GetComponent<Player>().enabled = true;
-        player2.GetComponent<Player>().enabled = false;
-        player3.GetComponent<Player>().enabled = false;
-        player4.GetComponent<Player>().enabled = false;
-
-        Transform Holdercamera1 = GameObject.Find("CameraHolder1").transform;
-        Transform Holdercamera2 = GameObject.Find("CameraHolder2").transform;
-        Transform Holdercamera3 = GameObject.Find("CameraHolder3").transform;
-        Transform Holdercamera4 = GameObject.Find("CameraHolder4").transform;
-
-        Holdercameras =  new Transform[4];
-        Holdercameras[0] = Holdercamera1;
-        Holdercameras[1] = Holdercamera2;
-        Holdercameras[2] = Holdercamera3;
-        Holdercameras[3] = Holdercamera4;
-
     }
 
     void Update()
@@ -51,25 +50,19 @@ public class PlayerSetting : MonoBehaviour
 
     void SwitchToNextPlayer()
     {
-        Player playerComponent1 = players[currentPlayerIndex].GetComponent<Player>();
-        if (playerComponent1 != null)
-        {
-            playerComponent1.enabled = false;
-        }
-        currentPlayerIndex += 1;
+
         
-        if (currentPlayerIndex >= Holdercameras.Length)
+        currentPlayerIndex += 1;
+        Debug.Log(currentPlayerIndex);
+        
+        if (currentPlayerIndex >= Controllers.Length)
         {
             currentPlayerIndex = 0;
         }
-        Player playerComponent2 = players[currentPlayerIndex].GetComponent<Player>();
-        if (playerComponent2 != null)
-        {
-            playerComponent2.enabled = true;
-        }
         Debug.Log(currentPlayerIndex);
-        camera.transform.SetParent(Holdercameras[currentPlayerIndex]);
-        camera.transform.localPosition = Vector3.zero;
+
+        camera1.GetComponent<vThirdPersonCamera>().SetTarget(players[currentPlayerIndex].transform); // Call the SetTarget method from your custom camera script.
+       
     }
 
 }
