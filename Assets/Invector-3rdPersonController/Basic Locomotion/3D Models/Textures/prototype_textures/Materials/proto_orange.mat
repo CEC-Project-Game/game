@@ -8,12 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: proto_orange
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ValidKeywords:
+  m_Shader: {fileID: 4800000, guid: e2c41f2ba6a3f334d894aeac1b04af52, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _CULL_NONE
   - _DETAIL_MULX2
   - _EMISSION
   - _NORMALMAP
-  m_InvalidKeywords: []
+  - _USEALPHACLIPPING_ON
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -23,6 +25,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -59,6 +65,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ShadeMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -66,25 +76,40 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 0.5
+    - _CelShadeMidPoint: 0.3
+    - _CelShadeSoftness: 0.1
+    - _Cull: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 0.5
+    - _DirectLightMultiplier: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.9
     - _GlossyReflections: 1
+    - _IndirectLightMultiplier: 0.1
     - _Metallic: 0.5
     - _Mode: 0
     - _OcclusionStrength: 0.3
+    - _OutlineWidth: 0
     - _Parallax: 0.02
+    - _ReceiveShadowMappingAmount: 0.5
     - _Shininess: 0.078125
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _UseAlphaClipping: 1
+    - _UseEmission: 0
+    - _VColBlendMode: 0
     - _ZWrite: 1
     m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 0.54901963, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionMapChannelMask: {r: 1, g: 1, b: 1, a: 1}
+    - _IndirectLightConstColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _OutlineColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+    - _ShadeColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_BuildTextureStacks: []
 --- !u!1002 &2100001
