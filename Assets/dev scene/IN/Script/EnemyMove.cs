@@ -6,7 +6,6 @@ public class EnemyMove : MonoBehaviour
 {
     public UnityEngine.AI.NavMeshAgent agent;
     public Vector3 _destinationPoint;
-    public float _destinationRadius;
     public Transform PlayerPosition;
 
     void Start()
@@ -16,7 +15,7 @@ public class EnemyMove : MonoBehaviour
     }
     void Update()
     {
-        SearchWaypoint();
+        SearchWaypoint();    
     }
 
     private void SearchWaypoint()

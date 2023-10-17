@@ -25,10 +25,12 @@ public class EnemyField : MonoBehaviour
 
     void Update()
     {
-        if(agent.remainingDistance < 0.1f || canSeePlayer)
+        if(agent.remainingDistance < 0.5f || canSeePlayer)
         {
             SearhWaypoint();
         }
+
+
     }
 
     private IEnumerator FOVRoutine()
@@ -80,7 +82,6 @@ public class EnemyField : MonoBehaviour
         if(canSeePlayer)
         {
             _destinationPoint = PlayerPosition.position;
-            Debug.Log("Can see player");
         }
         
         UnityEngine.AI.NavMeshHit hit;

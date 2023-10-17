@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private Camera playerCamera;
+    public Camera playerCamera;
     private CharacterController characterController;
 
     private Vector3 moveDirection;
