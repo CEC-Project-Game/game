@@ -25,10 +25,12 @@ public class EnemyField : MonoBehaviour
 
     void Update()
     {
-        if(agent.remainingDistance < 0.1f || canSeePlayer)
+        if(agent.remainingDistance < 0.5f || canSeePlayer)
         {
             SearhWaypoint();
         }
+
+
     }
 
     private IEnumerator FOVRoutine()
@@ -75,6 +77,7 @@ public class EnemyField : MonoBehaviour
         {
             _destinationPoint  = Random.insideUnitSphere * _destinationRadius;
             _destinationPoint = _destinationPoint + transform.position;
+            Debug.Log("Cant see");
         }    
 
         if(canSeePlayer)
