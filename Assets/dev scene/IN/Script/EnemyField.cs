@@ -77,13 +77,11 @@ public class EnemyField : MonoBehaviour
         {
             _destinationPoint  = Random.insideUnitSphere * _destinationRadius;
             _destinationPoint = _destinationPoint + transform.position;
-            Debug.Log("Cant see");
         }    
 
         if(canSeePlayer)
         {
             _destinationPoint = PlayerPosition.position;
-            Debug.Log("Can see player");
         }
         
         UnityEngine.AI.NavMeshHit hit;

@@ -123,12 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 576333aff0b20fc419185a30118cf1b6, type: 2}
---- !u!4 &51940956 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2165452727176607809, guid: fe3e5347f3d68f94f9101c3d78026d8b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1330474811}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &174011511
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,8 +250,8 @@ GameObject:
   - component: {fileID: 194900043}
   - component: {fileID: 194900042}
   - component: {fileID: 194900041}
-  - component: {fileID: 194900040}
   - component: {fileID: 194900039}
+  - component: {fileID: 194900045}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -287,31 +281,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &194900040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194900038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58f14a5c2ece0114cb42e0cf561dfb70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 194900039}
-  _destinationPoint: {x: 0, y: 0, z: 0}
-  _destinationRadius: 0
-  PlayerPosition: {fileID: 51940956}
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 8
-  obstructionMask:
-    serializedVersion: 2
-    m_Bits: 64
-  canSeePlayer: 0
-  radius: 15
-  angle: 141
 --- !u!65 &194900041
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -390,6 +359,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &194900045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194900038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8093384dd99e9d74c900a637e89f506b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 194900039}
+  _destinationPoint: {x: 0, y: 0, z: 0}
+  PlayerPosition: {fileID: 637897065}
+--- !u!4 &637897065 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5321717563192189351, guid: fe3e5347f3d68f94f9101c3d78026d8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1330474811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1330474811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1108,7 +1098,7 @@ GameObject:
   - component: {fileID: 1613111705}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Action
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
