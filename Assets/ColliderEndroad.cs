@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class ColliderEndroad : MonoBehaviour
 {
-    
+    public GameObject timelineEnd;
     void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.tag == "Player")
         {
-            GameObject timelineEnd = GameObject.Find("TimelineEnd");
             timelineEnd.SetActive(true);
         }
     }
