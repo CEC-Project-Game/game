@@ -8363,7 +8363,7 @@ GameObject:
   - component: {fileID: 319676008}
   - component: {fileID: 319676007}
   m_Layer: 5
-  m_Name: Image
+  m_Name: black fade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9729,8 +9729,9 @@ GameObject:
   - component: {fileID: 386736611}
   - component: {fileID: 386736613}
   - component: {fileID: 386736612}
+  - component: {fileID: 386736614}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: time to go home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9769,7 +9770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9789,7 +9790,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Time to go home
+  m_Text: It's starting to get dark, it's time to go home.
 --- !u!222 &386736613
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9798,6 +9799,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386736610}
   m_CullTransparentMesh: 1
+--- !u!95 &386736614
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386736610}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &386795624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26607,6 +26629,8 @@ PlayableDirector:
     value: {fileID: 719824749}
   - key: {fileID: 2260552406476200949, guid: 9545d16b40760d849b15f92730bf4c35, type: 2}
     value: {fileID: 386736610}
+  - key: {fileID: -6031188118802122660, guid: 9545d16b40760d849b15f92730bf4c35, type: 2}
+    value: {fileID: 386736614}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1142566812
