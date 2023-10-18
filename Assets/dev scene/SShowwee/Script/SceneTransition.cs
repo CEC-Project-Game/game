@@ -8,7 +8,9 @@ public class SceneTransition : MonoBehaviour
     public int Scene_Warp;
     [SerializeField] Animator transitionAim;
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public SceneTransition Scene;
+
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -20,9 +22,8 @@ public class SceneTransition : MonoBehaviour
     IEnumerator LoadScene()
     {
         transitionAim.SetTrigger("End");
-        yield return new
-
-        
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(Scene.Scene_Warp);
         transitionAim.SetTrigger("Start");
     }
 }

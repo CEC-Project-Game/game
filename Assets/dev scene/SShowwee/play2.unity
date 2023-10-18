@@ -2470,7 +2470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 129602863}
   - component: {fileID: 129602862}
-  - component: {fileID: 129602861}
+  - component: {fileID: 129602864}
   m_Layer: 0
   m_Name: FinishPoint
   m_TagString: Untagged
@@ -2478,20 +2478,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &129602861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129602860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd71fa444a2990544ba5ce87d56739a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goNextLevel: 1
-  levelName: 
 --- !u!65 &129602862
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2520,6 +2506,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &129602864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129602860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2147bad372206249ae38ab191d60b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scene_Warp: 2
+  transitionAim: {fileID: 872674930}
+  Scene: {fileID: 129602864}
 --- !u!1 &130091289
 GameObject:
   m_ObjectHideFlags: 0
