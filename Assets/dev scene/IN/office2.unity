@@ -284,8 +284,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.8396226, g: 0.21703447, b: 0.21703447, a: 1}
-  m_Intensity: 10
+  m_Color: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
+  m_Intensity: 14
   m_Range: 10000
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -22383,7 +22383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &784928566
 Transform:
   m_ObjectHideFlags: 0
@@ -27536,6 +27536,11 @@ PrefabInstance:
     - target: {fileID: 508903175578065981, guid: f75e612b66e6b0a4ab52157aa259c3f2,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482308612100174241, guid: f75e612b66e6b0a4ab52157aa259c3f2,
+        type: 3}
+      propertyPath: m_RenderPostProcessing
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8686967286141494211, guid: f75e612b66e6b0a4ab52157aa259c3f2,
@@ -66791,6 +66796,8 @@ PlayableDirector:
     value: {fileID: 919132149219530027}
   - key: {fileID: -1416475111649161220, guid: 44c4a47b3b884a548be96dbba997cf23, type: 2}
     value: {fileID: 1394599873}
+  - key: {fileID: -4876927577954549023, guid: 44c4a47b3b884a548be96dbba997cf23, type: 2}
+    value: {fileID: 784928565}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &2106392244
