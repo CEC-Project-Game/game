@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!243 &-3596938606812768064
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Zombie
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 46ec4822b201d8d428202618609146b6
+  m_Children: []
+  m_Volume: 75a7732261e52044da78cedd5d1055b0
+  m_Pitch: 5e5e1202de1bbd24895da02cea9e3a7f
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -729647063960276303}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &-729647063960276303
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 48ea319470bae5d4db4e011663aca885
+  m_EffectName: Attenuation
+  m_MixLevel: a6757e573a305b84fbe5949bd86e0123
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -25,6 +58,7 @@ AudioMixerController:
     - 138caa94f588d264583e794121deb6cf
     - ffa782bef800cac409af62b094f699a6
     - e1a4eac9710252e4a8b3063ac41b8e37
+    - 46ec4822b201d8d428202618609146b6
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24566662}
@@ -44,6 +78,7 @@ AudioMixerGroupController:
   - {fileID: 24304546}
   - {fileID: 24319482}
   - {fileID: 243744038821720738}
+  - {fileID: -3596938606812768064}
   m_Volume: 73b092ba4aaa1574992cf5fdd53f2c4a
   m_Pitch: db7cfe05a86f170428825e6d30dace1b
   m_Send: 00000000000000000000000000000000
@@ -439,6 +474,7 @@ AudioMixerSnapshotController:
     606336d1f0ce54e43800bf2b33d2b4c4: 14.7
     fa53fed180b80bd4bbca8993cce5b0b1: 0.888
     4677822270922d04a91e5d66e9095087: 2000
+    75a7732261e52044da78cedd5d1055b0: -5.3230715
     76fc2d52b85d03c4eb22ce91abac4e66: -6.5200205
     02675c6266fa20d4c9c1836851228872: -11.1
     2ab3bd8239452b44484cdd0677dd643b: -375
