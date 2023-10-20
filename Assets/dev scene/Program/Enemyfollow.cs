@@ -41,6 +41,7 @@ public class Enemyfollow : MonoBehaviour
         m_PlayerNear = false;
         m_WaitTime = startWaitTime;                 //  Set the wait time variable that will change
         m_TimeToRotate = timeToRotate;
+        gameObject.GetComponent<AudioSource>().enabled = false;
 
         m_CurrentWaypointIndex = 0;                 //  Set the initial waypoint
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -199,7 +200,8 @@ public class Enemyfollow : MonoBehaviour
                 float dstToPlayer = Vector3.Distance(transform.position, player.position);          //  Distance of the enmy and the player
                 if (!Physics.Raycast(transform.position, dirToPlayer, dstToPlayer, obstacleMask))
                 {
-                    m_playerInRange = true;             //  The player has been seeing by the enemy and then the nemy starts to chasing the player
+                    m_playerInRange = true;
+                    gameObject.GetComponent<AudioSource>().enabled = true;
                     m_IsPatrol = false;                 //  Change the state to chasing the player
                 }
                 else
@@ -208,6 +210,7 @@ public class Enemyfollow : MonoBehaviour
                      *  If the player is behind a obstacle the player position will not be registered
                      * */
                     m_playerInRange = false;
+                    gameObject.GetComponent<AudioSource>().enabled = false;
                 }
             }
             if (Vector3.Distance(transform.position, player.position) > viewRadius)
