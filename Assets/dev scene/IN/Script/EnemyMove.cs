@@ -7,9 +7,11 @@ public class EnemyMove : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent agent;
     public Vector3 _destinationPoint;
     public Transform PlayerPosition;
+    public float x;
 
     void Start()
     {
+        agent.speed = 5;
         agent.angularSpeed = 300;
         agent.acceleration = 100;
     }
