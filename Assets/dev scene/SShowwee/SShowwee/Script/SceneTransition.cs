@@ -22,7 +22,7 @@ public class SceneTransition : MonoBehaviour
     IEnumerator LoadScene()
     {
         transitionAim.SetTrigger("End");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(Scene.Scene_Warp);
         transitionAim.SetTrigger("Start");
     }
