@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(EnemyField))]
+/*[CustomEditor(typeof(EnemyField))]
 public class FieldOfViewEdit : Editor
 {
     private void OnSceneGUI()
@@ -26,3 +26,4 @@ public class FieldOfViewEdit : Editor
     }
 }
 
+*/
