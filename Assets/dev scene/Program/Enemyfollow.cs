@@ -138,11 +138,6 @@ public class Enemyfollow : MonoBehaviour
         }
     }
 
-    private void OnAnimatorMove()
-    {
-
-    }
-
     public void NextPoint()
     {
         m_CurrentWaypointIndex = (m_CurrentWaypointIndex + 1) % waypoints.Length;
@@ -207,8 +202,8 @@ public class Enemyfollow : MonoBehaviour
                 else
                 {
                     /*
-                     *  If the player is behind a obstacle the player position will not be registered
-                     * */
+                       If the player is behind a obstacle the player position will not be registered
+                      */
                     m_playerInRange = false;
                     gameObject.GetComponent<AudioSource>().enabled = false;
                 }
@@ -219,7 +214,8 @@ public class Enemyfollow : MonoBehaviour
                  *  If the player is further than the view radius, then the enemy will no longer keep the player's current position.
                  *  Or the enemy is a safe zone, the enemy will no chase
                  * */
-                m_playerInRange = false;                //  Change the sate of chasing
+                m_playerInRange = false;  
+                gameObject.GetComponent<AudioSource>().enabled = false;              //  Change the sate of chasing
             }
             if (m_playerInRange)
             {
