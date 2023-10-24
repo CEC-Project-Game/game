@@ -16106,7 +16106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &415237183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32881,7 +32881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &883970757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34418,6 +34418,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1093156082}
     m_Modifications:
+    - target: {fileID: 7040915280087986616, guid: 72b3f53fb27c40a409370d922f81bb38,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.06
+      objectReference: {fileID: 0}
     - target: {fileID: 8157027761499768450, guid: 72b3f53fb27c40a409370d922f81bb38,
         type: 3}
       propertyPath: m_RootOrder
@@ -34436,7 +34441,7 @@ PrefabInstance:
     - target: {fileID: 8157027761499768450, guid: 72b3f53fb27c40a409370d922f81bb38,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -67.40899
+      value: -72.243
       objectReference: {fileID: 0}
     - target: {fileID: 8157027761499768450, guid: 72b3f53fb27c40a409370d922f81bb38,
         type: 3}
@@ -34487,26 +34492,31 @@ PrefabInstance:
         type: 3}
       propertyPath: waypoints.Array.data[1]
       value: 
-      objectReference: {fileID: 610880116}
+      objectReference: {fileID: 1637842841}
     - target: {fileID: 8554918399134244005, guid: 72b3f53fb27c40a409370d922f81bb38,
         type: 3}
       propertyPath: waypoints.Array.data[2]
       value: 
-      objectReference: {fileID: 72183106}
+      objectReference: {fileID: 2079945413}
     - target: {fileID: 8554918399134244005, guid: 72b3f53fb27c40a409370d922f81bb38,
         type: 3}
       propertyPath: waypoints.Array.data[3]
       value: 
-      objectReference: {fileID: 2079945413}
+      objectReference: {fileID: 72183106}
     - target: {fileID: 8554918399134244005, guid: 72b3f53fb27c40a409370d922f81bb38,
         type: 3}
       propertyPath: waypoints.Array.data[4]
       value: 
-      objectReference: {fileID: 1637842841}
+      objectReference: {fileID: 610880116}
     - target: {fileID: 8824879493329050680, guid: 72b3f53fb27c40a409370d922f81bb38,
         type: 3}
       propertyPath: m_Name
       value: real enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824879493329050680, guid: 72b3f53fb27c40a409370d922f81bb38,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b3f53fb27c40a409370d922f81bb38, type: 3}
