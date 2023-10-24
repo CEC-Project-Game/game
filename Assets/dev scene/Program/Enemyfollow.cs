@@ -41,7 +41,6 @@ public class Enemyfollow : MonoBehaviour
         m_PlayerNear = false;
         m_WaitTime = startWaitTime;                 //  Set the wait time variable that will change
         m_TimeToRotate = timeToRotate;
-        gameObject.GetComponent<AudioSource>().enabled = false;
 
         m_CurrentWaypointIndex = 0;                 //  Set the initial waypoint
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -138,6 +137,11 @@ public class Enemyfollow : MonoBehaviour
         }
     }
 
+    private void OnAnimatorMove()
+    {
+
+    }
+
     public void NextPoint()
     {
         m_CurrentWaypointIndex = (m_CurrentWaypointIndex + 1) % waypoints.Length;
@@ -195,17 +199,15 @@ public class Enemyfollow : MonoBehaviour
                 float dstToPlayer = Vector3.Distance(transform.position, player.position);          //  Distance of the enmy and the player
                 if (!Physics.Raycast(transform.position, dirToPlayer, dstToPlayer, obstacleMask))
                 {
-                    m_playerInRange = true;
-                    gameObject.GetComponent<AudioSource>().enabled = true;
+                    m_playerInRange = true;             //  The player has been seeing by the enemy and then the nemy starts to chasing the player
                     m_IsPatrol = false;                 //  Change the state to chasing the player
                 }
                 else
                 {
                     /*
-                       If the player is behind a obstacle the player position will not be registered
-                      */
+                     *  If the player is behind a obstacle the player position will not be registered
+                     * */
                     m_playerInRange = false;
-                    gameObject.GetComponent<AudioSource>().enabled = false;
                 }
             }
             if (Vector3.Distance(transform.position, player.position) > viewRadius)
@@ -214,8 +216,7 @@ public class Enemyfollow : MonoBehaviour
                  *  If the player is further than the view radius, then the enemy will no longer keep the player's current position.
                  *  Or the enemy is a safe zone, the enemy will no chase
                  * */
-                m_playerInRange = false;  
-                gameObject.GetComponent<AudioSource>().enabled = false;              //  Change the sate of chasing
+                m_playerInRange = false;                //  Change the sate of chasing
             }
             if (m_playerInRange)
             {
@@ -227,5 +228,6 @@ public class Enemyfollow : MonoBehaviour
         }
     }
 }
+
 
 
