@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UniGLTF;
 using UnityEngine;
 using UnityEngine.AI;
 public class Enemyfollow : MonoBehaviour
@@ -16,7 +17,8 @@ public class Enemyfollow : MonoBehaviour
     public LayerMask obstacleMask;                  //  To detect the obstacules with the raycast
     public float meshResolution = 1.0f;             //  How many rays will cast per degree
     public int edgeIterations = 4;                  //  Number of iterations to get a better performance of the mesh filter when the raycast hit an obstacule
-    public float edgeDistance = 0.5f;               //  Max distance to calcule the a minumun and a maximum raycast when hits something
+    public float edgeDistance = 0.5f;               //  Max distance to calcule the a minumun and a maximum raycast when hits something'
+    public AudioSource _actionObject;
 
 
     public Transform[] waypoints;                   //  All the waypoints where the enemy patrols
@@ -201,6 +203,7 @@ public class Enemyfollow : MonoBehaviour
                 {
                     m_playerInRange = true;             //  The player has been seeing by the enemy and then the nemy starts to chasing the player
                     m_IsPatrol = false;                 //  Change the state to chasing the player
+                    _actionObject.enabled = true;
                 }
                 else
                 {
