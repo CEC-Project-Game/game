@@ -5,7 +5,7 @@ using UnityEngine;
 public class swapPlayer : MonoBehaviour
 {
     public List<GameObject> playerPrefabs;
-    public string playerTag = "Player";
+    private string playerTag = "Player";
 
     private void Update()
     {
