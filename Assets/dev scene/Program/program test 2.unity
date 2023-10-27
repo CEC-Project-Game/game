@@ -216,8 +216,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1413040287268057334, guid: fe3e5347f3d68f94f9101c3d78026d8b,
         type: 3}
-      propertyPath: openCloseWindow
-      value: 1
+      propertyPath: openCloseEvents
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2165452727176607809, guid: fe3e5347f3d68f94f9101c3d78026d8b,
         type: 3}
@@ -276,18 +276,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2365092862612692072, guid: fe3e5347f3d68f94f9101c3d78026d8b,
         type: 3}
-      propertyPath: openCloseWindow
+      propertyPath: selectedToolbar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365092862612692072, guid: fe3e5347f3d68f94f9101c3d78026d8b,
+        type: 3}
+      propertyPath: rotateToCameraWhileStrafe
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2365092862612692072, guid: fe3e5347f3d68f94f9101c3d78026d8b,
         type: 3}
-      propertyPath: selectedToolbar
+      propertyPath: OnLateUpdate.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365092862612692072, guid: fe3e5347f3d68f94f9101c3d78026d8b,
+        type: 3}
+      propertyPath: OnLateUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365092862612692072, guid: fe3e5347f3d68f94f9101c3d78026d8b,
+        type: 3}
+      propertyPath: OnLateUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3765252761222146850, guid: fe3e5347f3d68f94f9101c3d78026d8b,
         type: 3}
       propertyPath: m_Name
       value: kid
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691933627223597013, guid: fe3e5347f3d68f94f9101c3d78026d8b,
+        type: 3}
+      propertyPath: selectedToolbar
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe3e5347f3d68f94f9101c3d78026d8b, type: 3}
@@ -437,7 +457,6 @@ MonoBehaviour:
   - {fileID: 3765252761222146850, guid: fe3e5347f3d68f94f9101c3d78026d8b, type: 3}
   - {fileID: 4341264410612345669, guid: c42d4dcb90ddebb41b21a0c583834d28, type: 3}
   - {fileID: 508903175578065981, guid: f75e612b66e6b0a4ab52157aa259c3f2, type: 3}
-  playerTag: Player
 --- !u!1 &1962476337
 GameObject:
   m_ObjectHideFlags: 0

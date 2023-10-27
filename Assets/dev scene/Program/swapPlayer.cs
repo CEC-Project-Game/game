@@ -6,19 +6,23 @@ public class swapPlayer : MonoBehaviour
 {
     public List<GameObject> playerPrefabs;
     private string playerTag = "Player";
+    private GameObject playerObject;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            playerObject = GameObject.FindGameObjectWithTag("PlayerObject");
             DestroyAndInstantiatePlayer(0);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
+            playerObject = GameObject.FindGameObjectWithTag("PlayerObject");
             DestroyAndInstantiatePlayer(1);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            playerObject = GameObject.FindGameObjectWithTag("PlayerObject");
             DestroyAndInstantiatePlayer(2);
         }
     }
@@ -29,11 +33,10 @@ public class swapPlayer : MonoBehaviour
 
         if (playerToDestroy != null)
         {
-            Vector3 spawnPosition = playerToDestroy.transform.position;
+            Vector3 spawnpos = playerToDestroy.transform.position;
+            Destroy(playerObject);
 
-            Destroy(playerToDestroy);
-
-            StartCoroutine(InstantiatePlayerWithDelay(prefabIndex, spawnPosition));
+            StartCoroutine(InstantiatePlayerWithDelay(prefabIndex, spawnpos));
         }
     }
 

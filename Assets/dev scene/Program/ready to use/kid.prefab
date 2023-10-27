@@ -1693,7 +1693,7 @@ GameObject:
   - component: {fileID: 2165452727176607809}
   m_Layer: 0
   m_Name: kid
-  m_TagString: Player
+  m_TagString: PlayerObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5233,7 +5233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openCloseEvents: 0
-  openCloseWindow: 0
+  openCloseWindow: 1
   selectedToolbar: 0
   _isDead: 0
   _currentHealth: 0
@@ -5332,8 +5332,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openCloseEvents: 0
-  openCloseWindow: 0
-  selectedToolbar: 0
+  openCloseWindow: 1
+  selectedToolbar: 1
   lockInput: 0
   unlockCursorOnStart: 0
   showCursorOnStart: 0
@@ -5423,7 +5423,7 @@ MonoBehaviour:
     mobileAxisInvert: 0
   lockCameraInput: 0
   ignoreCameraRotation: 0
-  rotateToCameraWhileStrafe: 1
+  rotateToCameraWhileStrafe: 0
   rotateCameraXInput:
     useInput: 1
     isAxisInUse: 0
@@ -5484,7 +5484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openCloseEvents: 0
-  openCloseWindow: 0
+  openCloseWindow: 1
   selectedToolbar: 0
   actionEnter: 0
   actionStay: 0
