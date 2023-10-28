@@ -39,6 +39,12 @@ public class ChangeModel : MonoBehaviour
             modelA.SetActive(true);
             modelNumber = 1;
         }
+        else if (modelNumber == 4)
+        {
+            modelA.SetActive(false);
+            modelB.SetActive(true);
+            modelC.SetActive(true);
+        }
     }
 
     void Update()
