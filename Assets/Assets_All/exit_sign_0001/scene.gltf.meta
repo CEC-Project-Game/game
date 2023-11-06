@@ -2,11 +2,21 @@ fileFormatVersion: 2
 guid: 86fead389533052468eeb2c24c41d6de
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GLASS_0001
+    second: {fileID: 2100000, guid: 74dd5cf9144d61946936af57b6c095e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RED_EMISSIVE_0001
+    second: {fileID: 2100000, guid: ab6c76bafdddde84ab9bdeeb19eba637, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aecd2106718f2444db3ca21345da2cef, type: 3}
   reverseAxis: 0
-  renderPipeline: 0
+  renderPipeline: 1
