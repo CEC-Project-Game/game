@@ -99,7 +99,7 @@ public class Enemyfollow : MonoBehaviour
         }
     }
 
-    private void Patroling()
+    private void Patroling() //fix
     {
         if (m_PlayerNear)
         {
@@ -138,12 +138,6 @@ public class Enemyfollow : MonoBehaviour
             }
         }
     }
-
-    private void OnAnimatorMove()
-    {
-
-    }
-
     public void NextPoint()
     {
         m_CurrentWaypointIndex = (m_CurrentWaypointIndex + 1) % waypoints.Length;
