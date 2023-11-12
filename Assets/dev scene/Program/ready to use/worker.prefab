@@ -92,6 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b04f4ac1b776ff48b5f78a97b57f776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStep:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5489038684708817957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,6 +1006,9 @@ GameObject:
   - component: {fileID: 5489038685156433338}
   - component: {fileID: 5489038685156433337}
   - component: {fileID: 2196767276903128753}
+  - component: {fileID: 7718498776947336509}
+  - component: {fileID: 7234211473495054849}
+  - component: {fileID: 4771860547626247108}
   m_Layer: 0
   m_Name: vThirdPersonBasic
   m_TagString: Player
@@ -1018,7 +1024,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5489038685156433335}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.58, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1306,18 +1312,34 @@ MonoBehaviour:
   selectedToolbar: 0
   _isDead: 0
   _currentHealth: 0
+  isImmortal: 0
+  fillHealthOnStart: 1
   maxHealth: 100
   healthRecovery: 0
   healthRecoveryDelay: 0
   currentHealthRecoveryDelay: 0
+  checkHealthEvents: []
   _onReceiveDamage:
     m_PersistentCalls:
       m_Calls: []
   _onDead:
     m_PersistentCalls:
       m_Calls: []
+  onChangeHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  onResetHealth:
+    m_PersistentCalls:
+      m_Calls: []
   deathBy: 0
   removeComponentsAfterDie: 0
+  debugActionListener: 0
+  OnCrouch:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStandUp:
+    m_PersistentCalls:
+      m_Calls: []
   _onActiveRagdoll:
     m_PersistentCalls:
       m_Calls: []
@@ -1330,12 +1352,23 @@ MonoBehaviour:
   onActionExit:
     m_PersistentCalls:
       m_Calls: []
-  debugWindow: 0
   maxStamina: 200
   staminaRecovery: 1.2
   sprintStamina: 30
   jumpStamina: 30
   rollStamina: 25
+  OnJump:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartSprinting:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishSprinting:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishSprintingByStamina:
+    m_PersistentCalls:
+      m_Calls: []
   OnStaminaEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -1353,41 +1386,70 @@ MonoBehaviour:
   stopMoveDistance: 0.5
   useRootMotion: 0
   locomotionType: 0
+  disableAnimations: 0
+  useLeanMovement: 1
   freeSpeed:
+    movementSmooth: 6
+    animationSmooth: 0.2
     rotationSpeed: 10
     walkByDefault: 0
+    rotateWithCamera: 0
     walkSpeed: 2
     runningSpeed: 3
     sprintSpeed: 4
     crouchSpeed: 2
   strafeSpeed:
+    movementSmooth: 6
+    animationSmooth: 0.2
     rotationSpeed: 10
     walkByDefault: 0
+    rotateWithCamera: 0
     walkSpeed: 2
     runningSpeed: 3
     sprintSpeed: 4
     crouchSpeed: 2
   rotateByWorld: 0
   turnOnSpotAnim: 0
-  rollControl: 0
   randomIdleTime: 0
-  jumpAirControl: 1
+  useContinuousSprint: 1
+  sprintOnlyFree: 1
+  crouchHeightReduction: 1.5
+  jumpWithRigidbodyForce: 0
+  jumpAndRotate: 1
   jumpTimer: 0.3
-  jumpForward: 3
   jumpHeight: 4
+  airSpeed: 5
+  airSmooth: 6
+  extraGravity: -10
+  limitFallVelocity: -15
+  ragdollVelocity: -15
+  fallMinHeight: 6
+  fallMinVerticalVelocity: -10
+  fallDamage: 10
+  useRollRootMotion: 1
+  rollControl: 0
+  rollSpeed: 0
+  rollRotationSpeed: 10
+  rollUseGravity: 1
+  rollUseGravityTime: 0.2
+  timeToRollAgain: 0.75
   groundCheckMethod: 1
+  useSnapGround: 1
+  snapPower: 0.5
   groundMinDistance: 0.25
   groundMaxDistance: 0.5
-  stepOffsetEnd: 0.45
-  stepOffsetStart: 0
-  stepSmooth: 4
   slopeLimit: 75
-  slideVelocity: 7
-  extraGravity: -10
-  ragdollVel: -16
+  slideDownVelocity: 7
+  slideSidewaysVelocity: 5
+  slidingEnterTime: 0.1
+  stepOffsetMaxHeight: 0.5
+  stepOffsetMinHeight: 0
+  stepOffsetDistance: 0.1
+  debugWindow: 0
+  applyingStepOffset: 0
+  inputSmooth: {x: 0, y: 0, z: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
   matchTarget: {fileID: 0}
-  lookAtWeight: 0
-  useInstance: 1
 --- !u!114 &5489038685156433340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1403,7 +1465,6 @@ MonoBehaviour:
   openCloseEvents: 0
   openCloseWindow: 0
   selectedToolbar: 0
-  lockInput: 0
   unlockCursorOnStart: 0
   showCursorOnStart: 0
   horizontalInput:
@@ -1418,6 +1479,9 @@ MonoBehaviour:
     joystickAxisInvert: 0
     keyboardAxisInvert: 0
     mobileAxisInvert: 0
+    timeButtonWasPressed: 0
+    lastTimeTheButtonWasPressed: 0
+    inButtomTimer: 0
   verticallInput:
     useInput: 1
     isAxisInUse: 0
@@ -1430,6 +1494,9 @@ MonoBehaviour:
     joystickAxisInvert: 0
     keyboardAxisInvert: 0
     mobileAxisInvert: 0
+    timeButtonWasPressed: 0
+    lastTimeTheButtonWasPressed: 0
+    inButtomTimer: 0
   jumpInput:
     useInput: 1
     isAxisInUse: 0
@@ -1442,6 +1509,9 @@ MonoBehaviour:
     joystickAxisInvert: 0
     keyboardAxisInvert: 0
     mobileAxisInvert: 0
+    timeButtonWasPressed: 0
+    lastTimeTheButtonWasPressed: 0
+    inButtomTimer: 0
   rollInput:
     useInput: 1
     isAxisInUse: 0
@@ -1454,6 +1524,9 @@ MonoBehaviour:
     joystickAxisInvert: 0
     keyboardAxisInvert: 0
     mobileAxisInvert: 0
+    timeButtonWasPressed: 0
+    lastTimeTheButtonWasPressed: 0
+    inButtomTimer: 0
   strafeInput:
     useInput: 1
     isAxisInUse: 0
@@ -1466,6 +1539,9 @@ MonoBehaviour:
     joystickAxisInvert: 0
     keyboardAxisInvert: 0
     mobileAxisInvert: 0
+    timeButtonWasPressed: 0
+    lastTimeTheButtonWasPressed: 0
+    inButtomTimer: 0
   sprintInput:
     useInput: 1
     isAxisInUse: 0
@@ -1478,6 +1554,9 @@ MonoBehaviour:
     joystickAxisInvert: 0
     keyboardAxisInvert: 0
     mobileAxisInvert: 0
+    timeButtonWasPressed: 0
+    lastTimeTheButtonWasPressed: 0
+    inButtomTimer: 0
   crouchInput:
     useInput: 1
     isAxisInUse: 0
@@ -1490,9 +1569,12 @@ MonoBehaviour:
     joystickAxisInvert: 0
     keyboardAxisInvert: 0
     mobileAxisInvert: 0
+    timeButtonWasPressed: 0
+    lastTimeTheButtonWasPressed: 0
+    inButtomTimer: 0
+  lockInput: 0
   lockCameraInput: 0
   ignoreCameraRotation: 0
-  rotateToCameraWhileStrafe: 1
   rotateCameraXInput:
     useInput: 1
     isAxisInUse: 0
@@ -1505,6 +1587,9 @@ MonoBehaviour:
     joystickAxisInvert: 0
     keyboardAxisInvert: 0
     mobileAxisInvert: 0
+    timeButtonWasPressed: 0
+    lastTimeTheButtonWasPressed: 0
+    inButtomTimer: 0
   rotateCameraYInput:
     useInput: 1
     isAxisInUse: 0
@@ -1517,6 +1602,9 @@ MonoBehaviour:
     joystickAxisInvert: 0
     keyboardAxisInvert: 0
     mobileAxisInvert: 0
+    timeButtonWasPressed: 0
+    lastTimeTheButtonWasPressed: 0
+    inButtomTimer: 0
   cameraZoomInput:
     useInput: 1
     isAxisInUse: 0
@@ -1529,17 +1617,24 @@ MonoBehaviour:
     joystickAxisInvert: 0
     keyboardAxisInvert: 0
     mobileAxisInvert: 0
+    timeButtonWasPressed: 0
+    lastTimeTheButtonWasPressed: 0
+    inButtomTimer: 0
+  OnLockCamera:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnlockCamera:
+    m_PersistentCalls:
+      m_Calls: []
   tpCamera: {fileID: 0}
+  ignoreTpCamera: 0
   customCameraState: 
   customlookAtPoint: 
   changeCameraState: 0
   smoothCameraState: 0
-  keepDirection: 0
-  OnLateUpdate:
-    m_PersistentCalls:
-      m_Calls: []
   cc: {fileID: 0}
   hud: {fileID: 0}
+  lockMoveInput: 0
 --- !u!114 &5489038685156433339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1558,29 +1653,29 @@ MonoBehaviour:
   actionEnter: 0
   actionStay: 0
   actionExit: 0
+  _doingAction: 0
   OnDoAction:
     m_PersistentCalls:
       m_Calls: []
-  actionInput:
-    useInput: 1
-    isAxisInUse: 0
-    keyboard: E
-    keyboardAxis: 0
-    joystick: A
-    joystickAxis: 0
-    mobile: A
-    mobileAxis: 0
-    joystickAxisInvert: 0
-    keyboardAxisInvert: 0
-    mobileAxisInvert: 0
   actionTag: Action
   useRootMotion: 1
-  triggerAction: {fileID: 0}
   debugMode: 0
-  canTriggerAction: 0
-  isPlayingAnimation: 0
-  triggerActionOnce: 0
+  triggerAction: {fileID: 0}
+  _playingAnimation: 0
+  actionStarted: 0
+  isLockTriggerEvents: 0
+  colliders: []
+  mainCamera: {fileID: 0}
+  OnEnterTriggerAction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExitTriggerAction:
+    m_PersistentCalls:
+      m_Calls: []
   OnStartAction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCancelAction:
     m_PersistentCalls:
       m_Calls: []
   OnEndAction:
@@ -1632,10 +1727,133 @@ MonoBehaviour:
   customSurfaces: []
   animationType: 0
   debugTextureName: 0
+  _volume: 1
   leftFootTrigger: {fileID: 7992581197651650236}
   rightFootTrigger: {fileID: 5603554069232605681}
   currentStep: {fileID: 0}
   footStepTriggers: []
+  detectionTags:
+    tags: []
+--- !u!114 &7718498776947336509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5489038685156433335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a5d2516d5dbbc40b1cfb5cbf17758a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openCloseEvents: 0
+  openCloseWindow: 1
+  selectedToolbar: 0
+  upDownAxis: {x: 1, y: 0, z: 0}
+  strafeHeadWeight: 0.8
+  strafeBodyWeight: 0.4
+  aimingHeadWeight: 0.8
+  aimingBodyWeight: 0.8
+  freeHeadWeight: 1
+  freeBodyWeight: 0.4
+  smooth: 12
+  defaultOffsetSpine: {x: 0, y: 0}
+  defaultOffsetHead: {x: 0, y: 0}
+  offsetSpine: {x: 0, y: 0}
+  offsetHead: {x: 0, y: 0}
+  followCamera: 1
+  alwaysFollowCamera: 0
+  cancelTrackOutOfAngle: 1
+  considerHeadAnimationForward: 0
+  horizontalAngleLimit: {x: -90, y: 90}
+  verticalAngleLimit: {x: -90, y: 90}
+  animatorIgnoreTags:
+  - Attack
+  - LockMovement
+  - CustomAction
+  - IsEquipping
+  autoFindBones: 1
+  head: {fileID: 0}
+  spine: []
+  updateTargetInteration: 1
+  distanceToDetect: 10
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  tagsToDetect:
+  - LookAt
+--- !u!114 &7234211473495054849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5489038685156433335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3a1d372e6451c4bb24139bce713b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openCloseEvents: 0
+  openCloseWindow: 1
+  selectedToolbar: 0
+  fpCamera: {fileID: 5489038685934162121}
+  cameraNearClip: 0.01
+  cameraYOffset: 0
+  cameraZOffset: 0.15
+  enableHeadCollider: 1
+  showGizmos: 1
+  colliderRadius: 0.12
+  colliderCenter: {x: 0, y: 0.1, z: 0.04}
+  cameraRotationSpeed: 1.89
+  useExtraSmoothing: 0
+  smoothingValue: 1
+  upAngleLimit: 50
+  downAngleLimit: 85
+  actionHAngleLimit: 90
+  actionDownAngleLimit: 55
+  usingShooter: 0
+  swayRecoilAmount: 1
+  usingMelee: 0
+  weekAttackKey: 323
+  strongAttackKey: 49
+  animatorUpdateMode: 1
+  bodyIKWeight: 1
+  RotationThld: 55
+  cinematicOnActions: 0
+  cinematicOnRequest: 1
+  lockMouseCursor: 1
+  addCrosshair: 1
+  addExtraCams: 1
+  disableMouseInput: 0
+  resetHeadPosition: 0
+--- !u!114 &4771860547626247108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5489038685156433335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 779cfe89f5933bf4a999c8ba0847fca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openCloseEvents: 0
+  openCloseWindow: 1
+  selectedToolbar: 0
+  thrdCameraPrefab: {fileID: 0}
+  swapKey: 8
+  defaultIsThirdCamera: 0
+  defaultThirdLocomotion: 0
+  thrdCameraDefaultStrafe: 0
+  OnSwapThirdPerson:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSwapFirstPerson:
+    m_PersistentCalls:
+      m_Calls: []
+  headTrack: {fileID: 0}
 --- !u!1 &5489038685186279827
 GameObject:
   m_ObjectHideFlags: 0
@@ -3820,15 +4038,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a5c95eb7ab7db4f9f2151bae646701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 0}
   playerPrefab: {fileID: 0}
+  spawnPoint: {fileID: 0}
   respawnTimer: 4
   destroyBodyAfterDead: 0
+  displayInfoInFadeText: 1
   OnReloadGame:
     m_PersistentCalls:
       m_Calls: []
   currentPlayer: {fileID: 0}
-  displayInfoInFadeText: 1
+  onSpawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5489038685639199977
 GameObject:
   m_ObjectHideFlags: 0
@@ -4615,7 +4836,6 @@ GameObject:
   - component: {fileID: 5489038685934162122}
   - component: {fileID: 5489038685934162121}
   - component: {fileID: 5489038685934162120}
-  - component: {fileID: 5489038685934162119}
   - component: {fileID: 6482308612100174241}
   m_Layer: 0
   m_Name: vThirdPersonCamera
@@ -4632,7 +4852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5489038685934162118}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.80961126, y: -1.0747693, z: -0.19706601}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4690,89 +4910,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5489038685934162118}
   m_Enabled: 1
---- !u!114 &5489038685934162119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489038685934162118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a1bfe72fbc87d04e885296b53e91c66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 5489038685156433336}
-  smoothBetweenState: 6
-  smoothCameraRotation: 6
-  scrollSpeed: 10
-  cullingLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  clipPlaneMargin: 0
-  checkHeightRadius: 0
-  showGizmos: 0
-  startUsingTargetRotation: 1
-  startSmooth: 0
-  lockCamera: 0
-  offsetMouse: {x: 0, y: 0}
-  indexList: 0
-  indexLookPoint: 0
-  offSetPlayerPivot: 0
-  distance: 5
-  currentStateName: 
-  currentTarget: {fileID: 0}
-  currentState:
-    Name: 
-    forward: 0
-    right: 0
-    defaultDistance: 0
-    maxDistance: 0
-    minDistance: 0
-    height: 0
-    smooth: 0
-    smoothDamp: 0
-    xMouseSensitivity: 0
-    yMouseSensitivity: 0
-    yMinLimit: 0
-    yMaxLimit: 0
-    xMinLimit: 0
-    xMaxLimit: 0
-    rotationOffSet: {x: 0, y: 0, z: 0}
-    cullingHeight: 0
-    cullingMinDist: 0
-    fov: 0
-    useZoom: 0
-    fixedAngle: {x: 0, y: 0}
-    lookPoints: []
-    cameraMode: 0
-  CameraStateList: {fileID: 11400000, guid: dbf2c7a931be7ae4d960bc178dc4dda6, type: 2}
-  lockTarget: {fileID: 0}
-  movementSpeed: {x: 0, y: 0}
-  lerpState:
-    Name: 
-    forward: 0
-    right: 0
-    defaultDistance: 0
-    maxDistance: 0
-    minDistance: 0
-    height: 0
-    smooth: 0
-    smoothDamp: 0
-    xMouseSensitivity: 0
-    yMouseSensitivity: 0
-    yMinLimit: 0
-    yMaxLimit: 0
-    xMinLimit: 0
-    xMaxLimit: 0
-    rotationOffSet: {x: 0, y: 0, z: 0}
-    cullingHeight: 0
-    cullingMinDist: 0
-    fov: 0
-    useZoom: 0
-    fixedAngle: {x: 0, y: 0}
-    lookPoints: []
-    cameraMode: 0
 --- !u!114 &6482308612100174241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7138,3 +7275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b04f4ac1b776ff48b5f78a97b57f776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStep:
+    m_PersistentCalls:
+      m_Calls: []
