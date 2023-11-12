@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0.15984176, y: 0.0026952624, z: -0.00043309486, w: 0.98713887}
   m_LocalPosition: {x: 28.234613, y: 11.5149355, z: -14.757786}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1867701466869715893}
   m_Father: {fileID: 0}
@@ -58,7 +59,7 @@ MonoBehaviour:
   startSmooth: 0
   lockCamera: 0
   offsetMouse: {x: 0, y: 0}
-  indexList: 3
+  indexList: 0
   indexLookPoint: 0
   offSetPlayerPivot: 0
   distance: 5
@@ -143,6 +144,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1867701466558128760}
   m_RootOrder: 0
