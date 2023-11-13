@@ -183,7 +183,7 @@ public class Enemyfollow : MonoBehaviour
     }
 
     void EnviromentView()
-    {
+    {   
         Collider[] playerInRange = Physics.OverlapSphere(transform.position, viewRadius, playerMask);   //  Make an overlap sphere around the enemy to detect the playermask in the view radius
 
         for (int i = 0; i < playerInRange.Length; i++)
