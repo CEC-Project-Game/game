@@ -4,7 +4,6 @@ using UnityEngine.AI;
 public class EnemyBase : MonoBehaviour
 {
     protected NavMeshAgent navMeshAgent;
-    public AudioSource _actionObject;
     public float speedWalk = 6;
     public float speedRun = 9;
 
@@ -12,7 +11,7 @@ public class EnemyBase : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.isStopped = false;
-        navMeshAgent.speed = speedWalk; // Set the default speed to speedWalk
+        navMeshAgent.speed = speedWalk;
     }
 
     protected void Move(float speed)
@@ -37,6 +36,7 @@ public class EnemyFollow : EnemyBase
     public LayerMask playerMask;
     public LayerMask obstacleMask;
     public Transform[] waypoints;
+    public AudioSource _actionObject;
 
     int m_CurrentWaypointIndex;
     Vector3 playerLastPosition = Vector3.zero;
