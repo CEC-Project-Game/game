@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMove : MonoBehaviour
+/*public class EnemyMove : MonoBehaviour
 {
     public UnityEngine.AI.NavMeshAgent agent;
     public Vector3 _destinationPoint;
@@ -50,4 +50,4 @@ public class EnemyMove : MonoBehaviour
     }
 
 
-}
+}*/

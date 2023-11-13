@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyBase : MonoBehaviour
+/*public class EnemyBase : MonoBehaviour
 {
     protected NavMeshAgent navMeshAgent;
     protected AudioSource _actionObject;
@@ -14,14 +14,10 @@ public class EnemyBase : MonoBehaviour
 
     protected void Move(float speed)
     {
+        if()
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = speed;
-    }
 
-    protected void Stop()
-    {
-        navMeshAgent.isStopped = true;
-        navMeshAgent.speed = 0;
     }
 }
 
@@ -280,3 +276,4 @@ public class EnemyTrack : EnemyBase
         return player != null ? player.transform.position : Vector3.zero;
     }
 }
+*/
