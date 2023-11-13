@@ -1,11 +1,74 @@
-using System.Collections;
-using System.Collections.Generic;
-using UniGLTF;
 using UnityEngine;
 using UnityEngine.AI;
-public class Enemyfollow : MonoBehaviour
+
+public class EnemyBase : MonoBehaviour
 {
-    public NavMeshAgent navMeshAgent;               //  Nav mesh agent component
+    protected NavMeshAgent navMeshAgent;
+    protected AudioSource _actionObject;
+
+    protected void Start()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        _actionObject = GetComponent<AudioSource>();
+    }
+
+    protected void Move(float speed)
+    {
+        navMeshAgent.isStopped = false;
+        navMeshAgent.speed = speed;
+    }
+
+    protected void Stop()
+    {
+        navMeshAgent.isStopped = true;
+        navMeshAgent.speed = 0;
+    }
+}
+
+public class Enemywalk : EnemyBase
+{
+    private int retryAttempts = 0;
+    private int maxRetryAttempts = 3;
+    public Vector3 _destinationPoint;
+    public Transform PlayerPosition;
+    public float x;
+    public float speed = 300;
+
+
+    void Update()
+    {
+        SearchWaypoint();
+    }
+
+    private void SearchWaypoint()
+    {
+
+        _destinationPoint = PlayerPosition.position;
+        NavMeshHit hit;
+
+        if (NavMesh.SamplePosition(_destinationPoint, out hit, 1f, NavMesh.AllAreas))
+        {
+            _destinationPoint = hit.position;
+            navMeshAgent.SetDestination(_destinationPoint);
+        }
+        else
+        {
+            if (retryAttempts < maxRetryAttempts)
+            {
+                retryAttempts++;
+                SearchWaypoint();
+            }
+        }
+
+    }
+    public void UpdateSpeed(float x)
+    {
+        navMeshAgent.speed = x;
+    }
+}
+
+public class EnemyTrack : EnemyBase
+{
     public float startWaitTime = 4;                 //  Wait time of every action
     public float timeToRotate = 2;                  //  Wait time when the enemy detect near the player without seeing
     public float speedWalk = 6;                     //  Walking speed, speed in the nav mesh agent
@@ -51,10 +114,9 @@ public class Enemyfollow : MonoBehaviour
         navMeshAgent.speed = speedWalk;             //  Set the navemesh speed with the normal speed of the enemy
         navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);   //  Set the destination to the first waypoint
     }
-
     private void Update()
     {
-        EnviromentView();                       //  Check whether or not the player is in the enemy's field of vision
+        EnviromentView(); // Check whether or not the player is in the enemy's field of vision
 
         if (!m_IsPatrol)
         {
@@ -68,20 +130,19 @@ public class Enemyfollow : MonoBehaviour
 
     private void Chasing()
     {
-        //  The enemy is chasing the player
-        m_PlayerNear = false;                       //  Set false that hte player is near beacause the enemy already sees the player
-        playerLastPosition = Vector3.zero;          //  Reset the player near position
+        m_PlayerNear = false;
+        playerLastPosition = Vector3.zero;
 
         if (!m_CaughtPlayer)
         {
             Move(speedRun);
-            navMeshAgent.SetDestination(m_PlayerPosition);          //  set the destination of the enemy to the player location
+            navMeshAgent.SetDestination(m_PlayerPosition);
         }
-        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)    //  Control if the enemy arrive to the player location
+
+        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
-            if (m_WaitTime <= 0 && !m_CaughtPlayer && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f)
+            if (m_WaitTime <= 0 && !m_CaughtPlayer && Vector3.Distance(transform.position, GetPlayerPosition()) >= 6f)
             {
-                //  Check if the enemy is not near to the player, returns to patrol after the wait time delay
                 m_IsPatrol = true;
                 m_PlayerNear = false;
                 Move(speedWalk);
@@ -91,19 +152,17 @@ public class Enemyfollow : MonoBehaviour
             }
             else
             {
-                if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 2.5f)
-                    //  Wait if the current position is not the player position
+                if (Vector3.Distance(transform.position, GetPlayerPosition()) >= 2.5f)
                     Stop();
                 m_WaitTime -= Time.deltaTime;
             }
         }
     }
 
-    private void Patroling() //fix
+    private void Patroling()
     {
         if (m_PlayerNear)
         {
-            //  Check if the enemy detect near the player, so the enemy will move to that position
             if (m_TimeToRotate <= 0)
             {
                 Move(speedWalk);
@@ -111,19 +170,18 @@ public class Enemyfollow : MonoBehaviour
             }
             else
             {
-                //  The enemy wait for a moment and then go to the last player position
                 Stop();
                 m_TimeToRotate -= Time.deltaTime;
             }
         }
         else
         {
-            m_PlayerNear = false;           //  The player is no near when the enemy is platroling
+            m_PlayerNear = false;
             playerLastPosition = Vector3.zero;
-            navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);    //  Set the enemy destination to the next waypoint
+            navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
+
             if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {
-                //  If the enemy arrives to the waypoint position then wait for a moment and go to the next
                 if (m_WaitTime <= 0)
                 {
                     NextPoint();
@@ -138,6 +196,7 @@ public class Enemyfollow : MonoBehaviour
             }
         }
     }
+
     public void NextPoint()
     {
         m_CurrentWaypointIndex = (m_CurrentWaypointIndex + 1) % waypoints.Length;
@@ -152,7 +211,7 @@ public class Enemyfollow : MonoBehaviour
 
     void Move(float speed)
     {
-       navMeshAgent.isStopped = false;
+        navMeshAgent.isStopped = false;
         navMeshAgent.speed = speed;
     }
 
@@ -183,8 +242,8 @@ public class Enemyfollow : MonoBehaviour
     }
 
     void EnviromentView()
-    {   
-        Collider[] playerInRange = Physics.OverlapSphere(transform.position, viewRadius, playerMask);   //  Make an overlap sphere around the enemy to detect the playermask in the view radius
+    {
+        Collider[] playerInRange = Physics.OverlapSphere(transform.position, viewRadius, playerMask);
 
         for (int i = 0; i < playerInRange.Length; i++)
         {
@@ -192,39 +251,32 @@ public class Enemyfollow : MonoBehaviour
             Vector3 dirToPlayer = (player.position - transform.position).normalized;
             if (Vector3.Angle(transform.forward, dirToPlayer) < viewAngle / 2)
             {
-                float dstToPlayer = Vector3.Distance(transform.position, player.position);          //  Distance of the enmy and the player
+                float dstToPlayer = Vector3.Distance(transform.position, player.position);
                 if (!Physics.Raycast(transform.position, dirToPlayer, dstToPlayer, obstacleMask))
                 {
-                    m_playerInRange = true;             //  The player has been seeing by the enemy and then the nemy starts to chasing the player
-                    m_IsPatrol = false;                 //  Change the state to chasing the player
+                    m_playerInRange = true;
+                    m_IsPatrol = false;
                     _actionObject.enabled = true;
                 }
                 else
                 {
-                    
-                       // If the player is behind a obstacle the player position will not be registered
-                    
                     m_playerInRange = false;
                 }
             }
             if (Vector3.Distance(transform.position, player.position) > viewRadius)
             {
-                
-                  // If the player is further than the view radius, then the enemy will no longer keep the player's current position.
-                  // Or the enemy is a safe zone, the enemy will no chase
-                 
-                m_playerInRange = false;                //  Change the sate of chasing
+                m_playerInRange = false;
             }
             if (m_playerInRange)
             {
-                
-                   // If the enemy no longer sees the player, then the enemy will go to the last position that has been registered
-                 
-                m_PlayerPosition = player.transform.position;       //  Save the player's current position if the player is in range of vision
+                m_PlayerPosition = player.transform.position;
             }
         }
     }
+
+    Vector3 GetPlayerPosition()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        return player != null ? player.transform.position : Vector3.zero;
+    }
 }
-
-
-
