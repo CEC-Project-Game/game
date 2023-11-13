@@ -218,7 +218,6 @@ public class EnemyMove : EnemyBase
     protected override void Start()
     {
         base.Start();
-        // Additional initialization specific to EnemyMove if needed
     }
 
     void Update()
