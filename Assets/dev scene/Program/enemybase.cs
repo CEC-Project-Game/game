@@ -210,7 +210,7 @@ public class EnemyFollow : EnemyBase
     }
 }
 
-public class EnemyMove : EnemyBase
+public class Enemy1 : EnemyBase
 {
     public Transform PlayerPosition;
     public Vector3 _destinationPoint;
