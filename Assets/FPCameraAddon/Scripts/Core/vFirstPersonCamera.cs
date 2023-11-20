@@ -16,6 +16,7 @@ using Invector;
 using Invector.vCharacterController;
 using Invector.vEventSystems;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [RequireComponent(typeof(vHeadTrack))]
 [vClassHeader(" First person Camera ", "Use context Menu > Set Camera position to initialize", iconName = "FPCameraIcon")]
@@ -117,6 +118,7 @@ public class vFirstPersonCamera : vMonoBehaviour
     public bool disableMouseInput = false;
     [vHideInInspector("disableMouseInput")]
     public bool resetHeadPosition = false;
+    static public float cameraConfig;
 
     private GameObject extraCamsPrefab;
     private GameObject crosshairPrefab;
@@ -169,7 +171,7 @@ public class vFirstPersonCamera : vMonoBehaviour
     private Transform cameraTransform;
     private Vector3 endCameraPosition;
     private float startTime;
-    private float transitionSpeed;
+    private float transitionSpeed; 
 
     void OnDisable()
     {
@@ -481,6 +483,7 @@ public class vFirstPersonCamera : vMonoBehaviour
         {
             isUpdateModeNormal = false;
         }
+        cameraRotationSpeed = cameraConfig;
     }
 
     void CameraHeadBonePosition()
@@ -749,5 +752,10 @@ public class vFirstPersonCamera : vMonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(newPos), vInput.cc.strafeSpeed.rotationSpeed * Time.deltaTime);
 
         }
+    }
+    static public void OnSliderValueChanged(float value)
+    {
+        cameraConfig = value;
+        Debug.Log(cameraConfig);
     }
 }

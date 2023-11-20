@@ -621,9 +621,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1949232134}
+      - m_Target: {fileID: 11500000, guid: 9369e40812cbbe644a7f628b88d11d91, type: 3}
         m_TargetAssemblyTypeName: SettingMenu, Assembly-CSharp
-        m_MethodName: SetValue
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2724,6 +2724,7 @@ GameObject:
   - component: {fileID: 2078911531}
   - component: {fileID: 2078911534}
   - component: {fileID: 2078911535}
+  - component: {fileID: 2078911536}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2806,6 +2807,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738a99f3ce9aa794cb804c49f3a7ed51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2078911536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078911530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9369e40812cbbe644a7f628b88d11d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 374507574}
 --- !u!1 &2111132781
 GameObject:
   m_ObjectHideFlags: 0
