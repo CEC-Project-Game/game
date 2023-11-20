@@ -10,6 +10,7 @@ public class cameraSpeed : MonoBehaviour
 
     public void Update()
     {
+        slider.value = 5f;
         vFirstPersonCamera.cameraConfig = slider.value;
     }
 }

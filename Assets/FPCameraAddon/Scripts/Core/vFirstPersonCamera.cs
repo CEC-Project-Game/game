@@ -753,9 +753,4 @@ public class vFirstPersonCamera : vMonoBehaviour
 
         }
     }
-    static public void OnSliderValueChanged(float value)
-    {
-        cameraConfig = value;
-        Debug.Log(cameraConfig);
-    }
 }
