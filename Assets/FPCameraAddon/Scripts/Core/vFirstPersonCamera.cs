@@ -51,7 +51,7 @@ public class vFirstPersonCamera : vMonoBehaviour
     [Space(5)]
     [Tooltip("the speed of the camera rotation")]
     [Range(0.1f, 3f)]
-    public float cameraRotationSpeed = 0.5f;
+    public float cameraRotationSpeed;
     [Tooltip("enable the camera extra smoothing")]
     public bool useExtraSmoothing = false;
     [vHideInInspector("useExtraSmoothing")]

@@ -7,10 +7,15 @@ using UnityEngine.UI;
 public class cameraSpeed : MonoBehaviour
 {
     public Slider slider;
+    public float speedcamra;
+
+    public void Start()
+    {
+        slider.value = 5f;
+    }
 
     public void Update()
     {
-        slider.value = 5f;
         vFirstPersonCamera.cameraConfig = slider.value;
     }
 }
