@@ -373,6 +373,7 @@ public class vFirstPersonCamera : vMonoBehaviour
                 animator.SetLayerWeight(i, 0);
             }
         }
+        cameraConfig = 1.25f;
     }
 
     void FixedUpdate()
@@ -484,6 +485,7 @@ public class vFirstPersonCamera : vMonoBehaviour
             isUpdateModeNormal = false;
         }
         cameraRotationSpeed = cameraConfig;
+        //Debug.Log(cameraRotationSpeed);
     }
 
     void CameraHeadBonePosition()
