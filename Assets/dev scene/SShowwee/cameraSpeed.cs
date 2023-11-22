@@ -16,6 +16,6 @@ public class cameraSpeed : MonoBehaviour
     public void Update()
     {
         vFirstPersonCamera.cameraConfig = slider.value;
-        Debug.Log(slider.value);
+        //Debug.Log(slider.value);
     }
 }
