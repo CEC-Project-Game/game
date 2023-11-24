@@ -3,10 +3,20 @@ guid: 63951f10e73767b45bc5f21a48175852
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EYELASH
+    second: {fileID: 2100000, guid: 2750dd3192e560d45babfcd0ecb76c7a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zom tex
+    second: {fileID: 2100000, guid: 2750dd3192e560d45babfcd0ecb76c7a, type: 2}
   materials:
     materialImportMode: 2
-    materialName: 0
+    materialName: 2
     materialSearch: 1
     materialLocation: 1
   animations:
@@ -16,7 +26,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 1
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -80,7 +91,42 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Zombie_FBX(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MOUTH
+      parentName: Zombie_FBX(Clone)
+      position: {x: 0.00003513258, y: 3.2477694, z: 0.19091105}
+      rotation: {x: 0.00000008146034, y: 0, z: -0, w: 1}
+      scale: {x: 2.0136719, y: 2.0136719, z: 2.0136719}
+    - name: Camera
+      parentName: Zombie_FBX(Clone)
+      position: {x: 0.0021815826, y: 3.0868182, z: 1.963099}
+      rotation: {x: 2.512148e-15, y: -1, z: -2.1175826e-22, w: 0.00000005960465}
+      scale: {x: 100.000015, y: 100.000015, z: 100}
+    - name: Sun
+      parentName: Zombie_FBX(Clone)
+      position: {x: 0.08804268, y: 3.8981192, z: 3.3792748}
+      rotation: {x: 0.96122974, y: 7.610368e-17, z: 7.610368e-17, w: 0.2757488}
+      scale: {x: 100, y: 100, z: 100}
+    - name: EYE RIGHT
+      parentName: Zombie_FBX(Clone)
+      position: {x: -0.0641136, y: 3.3894756, z: 0.1611998}
+      rotation: {x: 0.104191795, y: 0, z: -0, w: 0.99455726}
+      scale: {x: 2.0136719, y: 2.0136716, z: 2.0136716}
+    - name: EYE LEFT
+      parentName: Zombie_FBX(Clone)
+      position: {x: 0.064317755, y: 3.3894057, z: 0.16094154}
+      rotation: {x: 0.026766226, y: 0, z: -0, w: 0.9996417}
+      scale: {x: 2.0136719, y: 2.0136719, z: 2.0136719}
+    - name: BODY
+      parentName: Zombie_FBX(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.00000008146034, y: 0, z: -0, w: 1}
+      scale: {x: 2.0136719, y: 2.0136719, z: 2.0136719}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
