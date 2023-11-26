@@ -12,7 +12,8 @@ public class EnemyAI : MonoBehaviour
     public float speedRun = 7.5f;                      //  Running speed
 
     float m_WaitTime;                               //  Variable of the wait time that makes the delay
-    private Animator Animator = null;
+    [SerializeField]
+    private Animator Animator;
 
     [SerializeField] FieldOfView fieldOfView;
     [SerializeField] NavMeshAgent agent;
@@ -46,6 +47,9 @@ public class EnemyAI : MonoBehaviour
 
         if (agent.remainingDistance <= .1f)
             transform.rotation = Quaternion.Slerp(transform.rotation, startRotation, Time.deltaTime * smooothRotationTime);
+
+        
+        /*Animator.SetBool(, agent.velocity.magnitude > speedRun + 0.2);*/
     }
 
     private void Destination()
@@ -57,7 +61,7 @@ public class EnemyAI : MonoBehaviour
             destination = target.position;
             agent.stoppingDistance = stoppingDistance;
             Move(speedRun);
-            /*Animator.SetBool(Chase, agent.velocity.magnitude > speedWalk);*/
+            Animator.SetBool(Chase, agent.velocity.magnitude > speedRun);
         }
         else
         {
@@ -79,8 +83,9 @@ public class EnemyAI : MonoBehaviour
                     return; // Skip setting the destination and moving if waiting
                 }
             }
-
+            
             Move(speedWalk);
+            Animator.SetBool(IsWalking, agent.velocity.magnitude > 0.1f);
         }
 
         agent.SetDestination(destination);
