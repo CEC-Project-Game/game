@@ -152,7 +152,7 @@ public class Enemyfollow : MonoBehaviour
 
     void Move(float speed)
     {
-       navMeshAgent.isStopped = false;
+        navMeshAgent.isStopped = false;
         navMeshAgent.speed = speed;
     }
 
