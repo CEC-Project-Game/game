@@ -58,34 +58,34 @@ public class EnemyAI : MonoBehaviour
             agent.stoppingDistance = stoppingDistance;
             Move(speedRun);
             /*Animator.SetBool(Chase, agent.velocity.magnitude > speedWalk);*/
-            
         }
         else
         {
-            destination =waypoints[m_CurrentWaypointIndex].position;
-            destination = startPos;
-            /*agent.stoppingDistance = 0;*/
-            /*agent.SetDestination(waypoints[m_CurrentWaypointIndex].position);*/    //  Set the enemy destination to the next waypoint
+            destination = waypoints[m_CurrentWaypointIndex].position;
+            agent.stoppingDistance = stoppingDistance;
+
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
-                //  If the enemy arrives to the waypoint position then wait for a moment and go to the next
+                // If the enemy arrives at the waypoint position, wait for a moment and go to the next
                 if (m_WaitTime <= 0)
                 {
                     NextPoint();
-                    Move(speedWalk);
                     m_WaitTime = startWaitTime;
-                    /*Animator.SetBool(IsWalking, agent.velocity.magnitude > 0.01f);*/
                 }
                 else
                 {
                     Stop();
                     m_WaitTime -= Time.deltaTime;
+                    return; // Skip setting the destination and moving if waiting
                 }
-                
             }
+
+            Move(speedWalk);
         }
+
         agent.SetDestination(destination);
     }
+
 
     /*private void Patroling() //fix
     {
