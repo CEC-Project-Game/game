@@ -62,7 +62,7 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            d estination =waypoints[m_CurrentWaypointIndex].position;
+            destination =waypoints[m_CurrentWaypointIndex].position;
             destination = startPos;
             /*agent.stoppingDistance = 0;*/
             /*agent.SetDestination(waypoints[m_CurrentWaypointIndex].position);*/    //  Set the enemy destination to the next waypoint
