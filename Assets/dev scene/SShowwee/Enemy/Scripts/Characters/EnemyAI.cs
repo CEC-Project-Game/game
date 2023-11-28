@@ -61,7 +61,9 @@ public class EnemyAI : MonoBehaviour
             destination = target.position;
             agent.stoppingDistance = stoppingDistance;
             Move(speedRun);
+            Animator.SetBool(IsWalking, false); // Set IsWalking to false when chasing
             Animator.SetBool(Chase, agent.velocity.magnitude > speedRun);
+            
         }
         else
         {
@@ -75,22 +77,25 @@ public class EnemyAI : MonoBehaviour
                 {
                     NextPoint();
                     m_WaitTime = startWaitTime;
+                    Move(speedWalk);
+                    Animator.SetBool(Chase, false); // Set Chase to false when patrolling
+                    Animator.SetBool(IsWalking, agent.velocity.magnitude > 0.1f);
                 }
                 else
                 {
                     Stop();
                     m_WaitTime -= Time.deltaTime;
+                    Animator.SetBool(IsWalking, false); // Set IsWalking to false when waiting
                     return; // Skip setting the destination and moving if waiting
                 }
             }
             
-            Move(speedWalk);
-            Animator.SetBool(IsWalking, agent.velocity.magnitude > 0.1f);
+            
+            
         }
 
         agent.SetDestination(destination);
     }
-
 
     /*private void Patroling() //fix
     {
