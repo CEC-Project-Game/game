@@ -77,9 +77,6 @@ public class EnemyAI : MonoBehaviour
                 {
                     NextPoint();
                     m_WaitTime = startWaitTime;
-                    Move(speedWalk);
-                    Animator.SetBool(Chase, false); // Set Chase to false when patrolling
-                    Animator.SetBool(IsWalking, agent.velocity.magnitude > 0.1f);
                 }
                 else
                 {
@@ -90,7 +87,9 @@ public class EnemyAI : MonoBehaviour
                 }
             }
             
-            
+            Move(speedWalk);
+            Animator.SetBool(Chase, false); // Set Chase to false when patrolling
+            Animator.SetBool(IsWalking, agent.velocity.magnitude > 0.1f);
             
         }
 
