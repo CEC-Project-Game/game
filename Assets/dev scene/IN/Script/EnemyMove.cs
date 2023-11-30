@@ -8,10 +8,10 @@ public class EnemyMove : MonoBehaviour
     public Vector3 _destinationPoint;
     public Transform PlayerPosition;
     public float x;
-
+    public float speed;
     void Start()
     {
-        agent.speed = 5;
+        agent.speed = speed;
         agent.angularSpeed = 300;
         agent.acceleration = 100;
     }
