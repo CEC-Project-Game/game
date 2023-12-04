@@ -16,10 +16,9 @@ public class soprtlightControl : MonoBehaviour
         setlight = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (setlight == true)  // Fix: use '==' for comparison
+        if (setlight == true)
         {
             StartCoroutine(WaitLight());
         }
