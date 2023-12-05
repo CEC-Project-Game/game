@@ -1,6 +1,7 @@
 using UnityEngine;
 using MarwanZaky.MathfX;
 using MarwanZaky.Methods;
+using UnityEngine.AI;
 
 public class FieldOfView : MonoBehaviour
 {

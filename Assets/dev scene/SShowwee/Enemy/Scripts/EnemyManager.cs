@@ -26,7 +26,7 @@ public class EnemyManager : MonoBehaviour
         enemyLocomotionManger = GetComponent<EnemyLocomotionManger>();
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
         agent = GetComponentInChildren<NavMeshAgent>();
-        agent.enabled = false;
+        agent.isStopped = false;
     }
 
     // Start is called before the first frame update
