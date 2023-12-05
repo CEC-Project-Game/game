@@ -11,7 +11,7 @@ public class PursueTargetState : State
         if (enemyManager.isPreformingAction)
             return this;
 
-        float distanceFromTarget = Vector3.Distance(enemyManager.target.transform.position, enemyManager.transform.position);
+        float distanceFromTarget = Vector3.Distance(enemyManager.target.transform.position, transform.position);
 
         if (enemyManager.isPreformingAction)
         {
@@ -37,7 +37,14 @@ public class PursueTargetState : State
             enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, enemyManager.startRotation, Time.deltaTime * enemyManager.smooothRotationTime);
         }
 
-        return this;
+        if (enemyManager.fieldOfView.IsTarget)
+        {
+            return this;
+        }
+        else
+        {
+            return idleState;
+        }
     }
 
     private void Destination(EnemyManager enemyManager)

@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class EnemyManager : MonoBehaviour
 {
-    EnemyLocomotionManger enemyLocomotionManger;
     EnemyAnimatorManager enemyAnimatorManager;
 
     public Vector3 startPos;
@@ -23,7 +22,6 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
-        enemyLocomotionManger = GetComponent<EnemyLocomotionManger>();
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
         agent = GetComponentInChildren<NavMeshAgent>();
         agent.isStopped = false;
