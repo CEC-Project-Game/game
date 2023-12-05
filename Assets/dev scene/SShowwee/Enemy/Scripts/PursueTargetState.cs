@@ -48,6 +48,7 @@ public class PursueTargetState : State
         {
             destination = enemyManager.target.position;
             enemyManager.agent.stoppingDistance = enemyManager.stoppingDistance;
+            Debug.Log("Kuy gu hen Na");
         }
         else
         {

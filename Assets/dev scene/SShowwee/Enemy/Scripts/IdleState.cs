@@ -10,6 +10,7 @@ public class IdleState : State
     {
         if (enemyManager.fieldOfView.IsTarget)
         {
+            Debug.Log("SEe");
             return pursueTargetState;
         }
         else

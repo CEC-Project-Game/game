@@ -42,6 +42,7 @@ public class PursueState : State
         {
             destination = enemyManager.target.position;
             enemyManager.agent.stoppingDistance = enemyManager.stoppingDistance;
+            Debug.Log("See law na");
         }
         else
         {
