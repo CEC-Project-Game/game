@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
-public class PursueTargetState : State
+public class PursueState : State
 {
-    public IdleState idleState;
-
     public override State Tick(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
     {
         if (enemyManager.isPreformingAction)
             return this;
 
-        float distanceFromTarget = Vector3.Distance(enemyManager.target.transform.position, enemyManager.transform.position);
+        float distanceFromTarget = Vector3.Distance(enemyManager.target.transform.position, transform.position);
 
         if (enemyManager.isPreformingAction)
         {
@@ -32,11 +31,6 @@ public class PursueTargetState : State
 
         Destination(enemyManager);
 
-        if (enemyManager.agent.remainingDistance <= .1f)
-        {
-            enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, enemyManager.startRotation, Time.deltaTime * enemyManager.smooothRotationTime);
-        }
-
         return this;
     }
 
@@ -56,5 +50,7 @@ public class PursueTargetState : State
         }
 
         enemyManager.agent.SetDestination(destination);
+
     }
+    
 }
