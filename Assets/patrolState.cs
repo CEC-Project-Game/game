@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/*
-public class PatrolState : MonoBehaviour
+
+public class PatrolState : State
 {
-    public override State Tick(AICharacterManager aiCharacter)
+    public override State Tick(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
+    {
+      
+    }
 }
-*/

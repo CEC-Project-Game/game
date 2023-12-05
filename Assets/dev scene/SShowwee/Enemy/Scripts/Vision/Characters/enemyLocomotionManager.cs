@@ -1,27 +1,27 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class enemyLocomotionManager : MonoBehaviour
+public class EnemyLocomotionManager : MonoBehaviour
 {
     Vector3 startPos;
     Quaternion startRotation;
 
-    float smooothRotationTime = 3f;
-    public float startWaitTime = 4f;                 //  Wait time of every action
-    public float speedWalk = 4f;                     //  Walking speed, speed in the nav mesh agent
-    public float speedRun = 7.5f;                      //  Running speed
+    float smoothRotationTime = 3f;
+    public float startWaitTime = 4f;
+    public float speedWalk = 4f;
+    public float speedRun = 7.5f;
 
-    float m_WaitTime;                               //  Variable of the wait time that makes the delay
+    float m_WaitTime;
+
     [SerializeField]
-    private Animator Animator;
+    private Animator animator;
 
     [SerializeField] FieldOfView fieldOfView;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform target;
     [SerializeField] float stoppingDistance = 1f;
-
-    public Transform[] waypoints;                   //  All the waypoints where the enemy patrols
-    int m_CurrentWaypointIndex;                     //  Current waypoint where the enemy is going to
+    public Transform[] waypoints;
+    int m_CurrentWaypointIndex;
 
     private const string IsWalking = "IsWalking";
     private const string Chase = "Chase";
@@ -35,7 +35,7 @@ public class enemyLocomotionManager : MonoBehaviour
     {
         startPos = transform.position;
         startRotation = transform.rotation;
-        m_WaitTime = startWaitTime;                 //  Set the wait time variable that will change
+        m_WaitTime = startWaitTime;
     }
 
     private void Update()
@@ -45,11 +45,10 @@ public class enemyLocomotionManager : MonoBehaviour
 
         Destination();
 
-        if (agent.remainingDistance <= .1f)
-            transform.rotation = Quaternion.Slerp(transform.rotation, startRotation, Time.deltaTime * smooothRotationTime);
-
-        
-        /*Animator.SetBool(, agent.velocity.magnitude > speedRun + 0.2);*/
+        if (agent.remainingDistance <= 0.1f)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, startRotation, Time.deltaTime * smoothRotationTime);
+        }
     }
 
     private void Destination()
@@ -61,9 +60,8 @@ public class enemyLocomotionManager : MonoBehaviour
             destination = target.position;
             agent.stoppingDistance = stoppingDistance;
             Move(speedRun);
-            Animator.SetBool(IsWalking, false); // Set IsWalking to false when chasing
-            Animator.SetBool(Chase, agent.velocity.magnitude > speedRun);
-            
+            animator.SetBool(IsWalking, false);
+            animator.SetBool(Chase, agent.velocity.magnitude > speedRun);
         }
         else
         {
@@ -72,7 +70,6 @@ public class enemyLocomotionManager : MonoBehaviour
 
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
-                // If the enemy arrives at the waypoint position, wait for a moment and go to the next
                 if (m_WaitTime <= 0)
                 {
                     NextPoint();
@@ -82,52 +79,32 @@ public class enemyLocomotionManager : MonoBehaviour
                 {
                     Stop();
                     m_WaitTime -= Time.deltaTime;
-                    Animator.SetBool(IsWalking, false); // Set IsWalking to false when waiting
-                    return; // Skip setting the destination and moving if waiting
+                    animator.SetBool(IsWalking, false);
+                    return;
                 }
             }
-            
+
             Move(speedWalk);
-            Animator.SetBool(Chase, false); // Set Chase to false when patrolling
-            Animator.SetBool(IsWalking, agent.velocity.magnitude > 0.1f);
-            
+            animator.SetBool(Chase, false);
+            animator.SetBool(IsWalking, agent.velocity.magnitude > 0.1f);
         }
 
         agent.SetDestination(destination);
     }
 
-    /*private void Patroling() //fix
-    {
-        Agent.SetDestination(waypoints[m_CurrentWaypointIndex].position);    //  Set the enemy destination to the next waypoint
-        if (Agent.remainingDistance <= Agent.stoppingDistance)
-        {
-            //  If the enemy arrives to the waypoint position then wait for a moment and go to the next
-            if (m_WaitTime <= 0)
-            {
-                NextPoint();
-                Move(speedWalk);
-                m_WaitTime = startWaitTime;
-            }
-            else
-            {
-                Stop();
-                m_WaitTime -= Time.deltaTime;
-            }
-        }
-    }*/
-    public void NextPoint()
+    private void NextPoint()
     {
         m_CurrentWaypointIndex = (m_CurrentWaypointIndex + 1) % waypoints.Length;
-        Debug.Log(m_CurrentWaypointIndex);
-        Debug.Log(waypoints[m_CurrentWaypointIndex].position);
-        /*agent.SetDestination(waypoints[m_CurrentWaypointIndex].position);*/
+        agent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
     }
-    void Stop()
+
+    private void Stop()
     {
         agent.isStopped = true;
-        agent.speed = 0;
+        agent.velocity = Vector3.zero;
     }
-    void Move(float speed)
+
+    private void Move(float speed)
     {
         agent.isStopped = false;
         agent.speed = speed;
