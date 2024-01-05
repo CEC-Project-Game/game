@@ -15,6 +15,7 @@ public class IdleState : State
         }
         else
         {
+            enemyAnimatorManager.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
             return this;
         }
     }

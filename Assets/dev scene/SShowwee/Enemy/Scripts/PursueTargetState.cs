@@ -24,7 +24,7 @@ public class PursueTargetState : State
             {
                 enemyAnimatorManager.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
             }
-            else if (distanceFromTarget <= .1f)
+            else if (distanceFromTarget <= 5f)
             {
                 enemyAnimatorManager.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
             }
@@ -64,5 +64,6 @@ public class PursueTargetState : State
         }
 
         enemyManager.agent.SetDestination(destination);
+        Debug.Log(destination.ToString());
     }
 }
